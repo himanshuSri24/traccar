@@ -1,5 +1,4 @@
 services:
-
   database:
     image: timescale/timescaledb:latest-pg16
     restart: unless-stopped
@@ -23,14 +22,15 @@ services:
       DATABASE_USER: traccar
       DATABASE_PASSWORD: traccar
     healthcheck:
-      test: [ "CMD", "wget", "-q", "--spider", "http://localhost:8082/api/health" ]
+      test:
+        ["CMD", "wget", "-q", "--spider", "http://localhost:8082/api/health"]
       interval: 2m
       timeout: 5s
       start_period: 1h
       retries: 3
     ports:
       - "8082:8082"
-      - "5000-5500:5000-5500"
+      - "6000-6500:5000-5500" # Map host 6000-6500 to container 5000-5500
     volumes:
       - /opt/traccar/logs:/opt/traccar/logs
 
