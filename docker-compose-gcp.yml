@@ -33,7 +33,7 @@ services:
 
     ports:
       - "8082:8082" # Web UI
-      - "3000:5027" # Device port (PG201/PL200 use GT06 protocol on 5027)
+      - "3000:5023" # Device port (PG201/PL200 use GT06 protocol on 5027)
 
     volumes:
       - /opt/traccar/logs:/opt/traccar/logs
